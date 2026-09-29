@@ -1,0 +1,14 @@
+{
+  "name": "Pisconauta",
+  "order": 2,
+  "featured": true,
+  "accent": "yellow",
+  "inProgress": false,
+  "disciplines": "Apps · Web",
+  "status": "Newest",
+  "url": "https://pisconauta.com",
+  "summary": "The most comprehensive pisco catalogue available — bodegas publish their bottles; drinkers search, scan labels, rate and keep a personal cellar. The newest and largest build in the portfolio.",
+  "image": "../../assets/projects/pisconauta/image.png",
+  "imageFocus": "center",
+  "tileIcon": "cube"
+}

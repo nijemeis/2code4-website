@@ -1,0 +1,124 @@
+---
+import { getEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import Mantra from './Mantra.astro';
+import Reading from './Reading.astro';
+
+const site = (await getEntry('site', 'site'))!.data;
+const steps = site.heroCard.steps;
+const last = steps.length - 1;
+---
+
+<section class="hero">
+  <div class="dots" aria-hidden="true"></div>
+  <div class="cols">
+    <div class="text">
+      <h1>
+        <Reading reading="front" highlight class="reading--front-in-hero" />
+        <Reading reading="back" highlight class="reading--back-in-hero" />
+      </h1>
+      <div class="mantra"><Mantra words={site.mantra} /></div>
+      <p class="intro">{site.heroIntro}</p>
+      <div class="actions">
+        <a href="#contact" class="btn btn--primary">Start a project</a>
+        <a href="#work" class="btn btn--secondary">See the work</a>
+        <button type="button" class="btn btn--ghost" data-flip>
+          <Icon name="arrows-left-right" size={16} />
+          Read it the other way
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-title">{site.heroCard.title}</span>
+      <ol>
+        {steps.map((s, i) => (
+          <li class:list={['step', { 'step--first': i === 0, 'step--last': i === last }]}>
+            <div class="rail">
+              <span class="box"><Icon name={s.icon} /></span>
+              {i !== last && <span class="line" />}
+            </div>
+            <div class="copy">
+              <span class="step-title">{s.title}</span>
+              <span class="step-caption">{s.caption}</span>
+              {i === last && site.heroCard.tags.length > 0 && (
+                <span class="tags">
+                  {site.heroCard.tags.map((t) => (
+                    <span class:list={['pill', { 'pill--yellow': t.highlight }]}>{t.label}</span>
+                  ))}
+                </span>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+      {site.heroCard.loopNote && (
+        <div class="loop"><Icon name="loop" /><span>{site.heroCard.loopNote}</span></div>
+      )}
+      {site.heroCard.creditNote && <div class="credit">{site.heroCard.creditNote}</div>}
+    </div>
+  </div>
+
+  {site.showStats && site.stats.length > 0 && (
+    <div class="stats">
+      {site.stats.map((s) => (
+        <div class="stat"><span class="value">{s.value}</span><span class="label">{s.label}</span></div>
+      ))}
+    </div>
+  )}
+</section>
+
+<style>
+  .hero { position: relative; padding: 72px 0 40px; }
+  .dots {
+    position: absolute; top: -40px; bottom: 0; left: 35%; right: -30vw; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(21, 20, 31, 0.16) 1px, transparent 1.6px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(closest-side, black, transparent);
+    -webkit-mask-image: radial-gradient(closest-side, black, transparent);
+  }
+  .cols { position: relative; display: flex; flex-wrap: wrap; gap: 56px clamp(32px, 5vw, 72px); align-items: center; }
+  .text { flex: 3 1 460px; min-width: 0; }
+  h1 { font-size: clamp(44px, 6.2vw, 84px); line-height: 1.04; letter-spacing: -0.04em; margin-left: -0.04em; }
+  .mantra { margin-top: 24px; }
+  .intro { font-size: 18px; line-height: 28px; max-width: 46ch; margin-top: 24px; color: var(--ink-2); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 28px; }
+
+  .card {
+    flex: 2 1 320px; max-width: 420px; padding: 24px 24px 20px; border-radius: 18px;
+    background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-raised);
+  }
+  .card-title {
+    display: block; margin-bottom: 20px; font-family: var(--mono); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--indigo);
+  }
+  ol { list-style: none; margin: 0; padding: 0; }
+  .step { display: flex; gap: 16px; }
+  .rail { display: flex; flex-direction: column; align-items: center; }
+  .box {
+    width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;
+    border-radius: 11px; background: var(--surface); border: 1px solid var(--line-strong); color: var(--indigo);
+  }
+  .step--first .box { background: var(--yellow-tint); border: 0; color: var(--yellow-ink); }
+  .step--last .box { background: var(--ink); border: 0; color: var(--yellow); box-shadow: 0 6px 18px rgba(21, 20, 31, 0.25); }
+  .line { flex: 1; width: 2px; min-height: 18px; border-radius: 2px; background: var(--indigo); }
+  .step--first .line { background: linear-gradient(var(--yellow), var(--indigo)); }
+  .copy { display: flex; flex-direction: column; gap: 3px; padding: 9px 0 20px; }
+  .step--last .copy { padding-bottom: 0; }
+  .step-title { font-size: 15px; font-weight: 600; }
+  .step-caption { font-size: 13px; line-height: 1.45; color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .loop {
+    display: flex; gap: 12px; align-items: center; margin-top: 22px; padding-top: 16px;
+    border-top: 1px dashed var(--line-dashed); font-size: 13px; font-weight: 500; color: var(--indigo-dark);
+  }
+  .credit { margin-top: 10px; font-size: 12px; color: var(--muted); }
+
+  .stats {
+    position: relative; display: flex; flex-wrap: wrap; gap: 14px 40px; margin-top: 72px;
+    padding-top: 24px; border-top: 1px solid var(--line);
+  }
+  .stat { display: flex; align-items: baseline; gap: 10px; }
+  .value { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: var(--ink); }
+  .label { font-size: 13px; color: var(--muted); }
+</style>

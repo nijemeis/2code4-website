@@ -1,0 +1,25 @@
+---
+import { getEntry } from 'astro:content';
+import Wordmark from './Wordmark.astro';
+import Mantra from './Mantra.astro';
+
+const site = (await getEntry('site', 'site'))!.data;
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <span class="left">
+    <Wordmark size={16} />
+    <Mantra words={site.mantra} small />
+    <span>· © {year}</span>
+  </span>
+  {site.footerNote && <span>{site.footerNote}</span>}
+</footer>
+
+<style>
+  .footer {
+    padding: 28px 0 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 32px; font-size: 13px; color: var(--muted);
+  }
+  .left { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+</style>

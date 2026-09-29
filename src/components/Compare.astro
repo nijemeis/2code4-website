@@ -1,0 +1,44 @@
+---
+import { getEntry } from 'astro:content';
+
+const c = (await getEntry('comparison', 'comparison'))!.data;
+---
+
+<section id="compare" class="compare">
+  <span class="kicker">{c.kicker}</span>
+  <h2 class="h2" style="max-width: 22ch">{c.title}</h2>
+  <div class="wrap" tabindex="0" role="region" aria-label={c.title}>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" style="width: 24%"><span class="visually-hidden">Aspect</span></th>
+          <th scope="col" style="width: 38%" class="th-trad">{c.traditionalLabel}</th>
+          <th scope="col" style="width: 38%" class="th-ours">{c.oursLabel}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {c.rows.map((r, i) => (
+          <tr>
+            <th scope="row">{r.label}</th>
+            <td class="trad">{r.traditional}</td>
+            <td class:list={{ first: i === 0 }}>{r.ours}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .compare { padding: 84px 0; }
+  .wrap { overflow-x: auto; margin-top: 40px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+  table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 15px; }
+  th, td { padding: 16px 22px; text-align: left; vertical-align: top; }
+  thead th { padding: 18px 22px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+  .th-trad { color: var(--muted); }
+  .th-ours { color: var(--indigo-dark); font-weight: 700; }
+  tbody tr { border-top: 1px solid var(--line); }
+  tbody th { font-weight: 600; }
+  .trad { color: var(--muted); }
+  .first { font-weight: 500; }
+</style>

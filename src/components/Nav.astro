@@ -1,0 +1,21 @@
+---
+import Wordmark from './Wordmark.astro';
+---
+
+<nav class="nav" aria-label="Main">
+  <a href="/" class="home" aria-label="2code4 home"><Wordmark /></a>
+  <a href="#approach" class="link">Approach</a>
+  <a href="#work" class="link">Work</a>
+  <a href="#compare" class="link">Compare</a>
+  <a href="#contact" class="btn btn--primary btn--small">Start a project</a>
+</nav>
+
+<style>
+  .nav {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px 28px;
+    padding: 18px max(var(--gutter), calc((100% - 1200px) / 2 + var(--gutter)));
+  }
+  .home { display: flex; align-items: center; margin-right: auto; }
+  .link { color: var(--ink); font-size: 14px; font-weight: 500; }
+  .link:hover { color: var(--indigo); }
+</style>

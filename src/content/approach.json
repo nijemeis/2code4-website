@@ -1,0 +1,25 @@
+{
+  "kicker": "The approach",
+  "title": "The code is no longer the hard part. The concept is.",
+  "intro": "AI writes production code. It can’t decide what should exist, why, or what “right” looks like. That’s the product owner’s job — and at 2code4 it never gets delegated.",
+  "steps": [
+    { "number": "01", "title": "Understand the problem", "body": "Most software fails at the concept, not the code. Every project starts with the real need — who uses it, where, and what has to change.", "icon": "magnifier", "accent": "yellow" },
+    { "number": "02", "title": "Shape the concept", "body": "Flows, screens, priorities and what to leave out — prototyped with AI under close direction, and clicked through before any production code exists.", "icon": "layout", "accent": "indigo" },
+    { "number": "03", "title": "Prompt the build", "body": "The product owner writes the brief; Claude Code writes the code — apps, sites, webshops, firmware and dashboards, from one seat.", "icon": "code", "accent": "indigo" }
+  ],
+  "steer": {
+    "label": "04 · Runs through every step",
+    "title": "Check and decide",
+    "body": "Vibecoding without steering is just vibes. Every output is reviewed — architecture, edge cases, fit with the concept. AI proposes; the product owner decides what ships."
+  },
+  "evolve": {
+    "label": "05 · And then again",
+    "title": "Live is a milestone, not the finish",
+    "body": "A product goes live early and keeps evolving. Each iteration is a short, agile sprint through the same loop — concept, prompt, check, decide — driven by what real users do.",
+    "releases": [
+      { "version": "v1.0", "title": "First release", "body": "The core that proves the concept, live with real users.", "state": "live" },
+      { "version": "v1.x", "title": "Sprints", "body": "Fixes, polish and the features users ask for.", "state": "done" },
+      { "version": "v2.0", "title": "Next phase", "body": "New platforms, integrations or hardware.", "state": "next" }
+    ]
+  }
+}

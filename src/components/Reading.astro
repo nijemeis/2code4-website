@@ -1,0 +1,28 @@
+---
+/**
+ * One reading of the slogan, as two block lines.
+ *   front: "2code4, / that's something."
+ *   back:  "That's something / 2code4."
+ * `highlight` puts the yellow marker under "something" (hero only).
+ */
+interface Props {
+  reading: 'front' | 'back';
+  highlight?: boolean;
+  class?: string;
+}
+const { reading, highlight = false, class: className } = Astro.props;
+---
+
+<span class:list={['reading', className]}>
+  {reading === 'front' ? (
+    <>
+      <span><span class="num">2</span>code<span class="num">4</span>,</span>
+      {' '}<span>that's {highlight ? <span class="hl">something.</span> : 'something.'}</span>
+    </>
+  ) : (
+    <>
+      <span>That's {highlight ? <span class="hl">something</span> : 'something'}</span>
+      {' '}<span><span class="num">2</span>code<span class="num">4</span>.</span>
+    </>
+  )}
+</span>

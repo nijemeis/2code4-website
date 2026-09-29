@@ -1,0 +1,11 @@
+{
+  "intro": "Bring the idea — an app, a site, a shop, a device. Working out what it should be is where we start.",
+  "email": "hello@2code4.com",
+  "briefLabel": "What should be built?",
+  "briefPlaceholder": "The problem, who it's for, and what it has to do",
+  "kindLabel": "It's mostly",
+  "kinds": ["An app", "A website", "A webshop", "Hardware"],
+  "submitLabel": "Send the concept",
+  "successTitle": "That's something.",
+  "successBody": "Thanks — your concept is in. Expect a reply by email."
+}

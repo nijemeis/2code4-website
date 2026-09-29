@@ -1,0 +1,14 @@
+{
+  "name": "Nije3D",
+  "order": 5,
+  "featured": false,
+  "accent": "yellow",
+  "inProgress": false,
+  "disciplines": "Webshop",
+  "status": "",
+  "url": "https://nije3d.com",
+  "summary": "Multi-colour 3D-printed collectibles, plus an STL print service with instant quotes.",
+  "image": "../../assets/projects/nije3d/image.webp",
+  "imageFocus": "center",
+  "tileIcon": "cube"
+}

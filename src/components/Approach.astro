@@ -1,0 +1,129 @@
+---
+import { getEntry } from 'astro:content';
+import Icon from './Icon.astro';
+
+const a = (await getEntry('approach', 'approach'))!.data;
+---
+
+<section id="approach" class="approach">
+  <span class="kicker">{a.kicker}</span>
+  <h2 class="h2" style="max-width: 20ch">{a.title}</h2>
+  {a.intro && <p class="intro">{a.intro}</p>}
+
+  <ol class="flow">
+    {a.steps.map((s, i) => (
+      <li class:list={['flow-card', `flow-card--${s.accent}`]}>
+        <span class="strip" aria-hidden="true" />
+        {i > 0 && <span class="badge" aria-hidden="true"><Icon name="arrow-right" size={16} stroke={20} /></span>}
+        <div class="flow-head">
+          <span class:list={['icon-box', { 'icon-box--yellow': s.accent === 'yellow' }]}><Icon name={s.icon} size={22} /></span>
+          <span class="flow-num mono">{s.number}</span>
+        </div>
+        <h3 class="h3">{s.title}</h3>
+        <p class="body">{s.body}</p>
+      </li>
+    ))}
+  </ol>
+
+  <div class="steer">
+    <div class="risers" aria-hidden="true"><span style="left: 15.5%" /><span style="left: 50%" /><span style="left: 84.5%" /></div>
+    <span class="icon-box icon-box--solid steer-box"><Icon name="steering" size={22} /></span>
+    <div class="steer-head">
+      <span class="steer-label">{a.steer.label}</span>
+      <h3 class="h3">{a.steer.title}</h3>
+    </div>
+    <p class="body steer-body">{a.steer.body}</p>
+  </div>
+
+  <div class="evolve">
+    <div class="evolve-intro">
+      <div class="evolve-head">
+        <span class="icon-box"><Icon name="loop" size={22} /></span>
+        <span class="evolve-label mono">{a.evolve.label}</span>
+      </div>
+      <h3 class="h3">{a.evolve.title}</h3>
+      <p class="body">{a.evolve.body}</p>
+    </div>
+    <div class="releases-wrap"><ol class="releases">
+      {a.evolve.releases.map((r, i) => (
+        <li class:list={['release', `release--${r.state}`]}>
+          {i > 0 && <span class="release-arrow" aria-hidden="true"><Icon name="arrow-right" size={16} stroke={22} /></span>}
+          <div class="release-head">
+            <span class="release-version mono">{r.version}</span>
+            {r.state === 'live' && <span class="live"><span class="live-dot" />Live</span>}
+          </div>
+          <span class="release-title">{r.title}</span>
+          <span class="release-body">{r.body}</span>
+        </li>
+      ))}
+    </ol></div>
+  </div>
+</section>
+
+<style>
+  .approach { padding: 112px 0 56px; container-type: inline-size; }
+  .intro { font-size: 16px; line-height: 28px; max-width: 60ch; margin-top: 20px; color: var(--muted); }
+  ol { list-style: none; margin: 0; padding: 0; }
+
+  .flow { display: flex; flex-wrap: wrap; gap: 20px 44px; margin-top: 48px; }
+  .flow-card {
+    position: relative; flex: 1 1 240px; padding: 24px; border-radius: 16px; background: var(--surface);
+    border: 1px solid var(--line); box-shadow: var(--shadow-card); display: flex; flex-direction: column; gap: 14px;
+  }
+  .strip { position: absolute; left: 24px; right: 24px; top: -1px; height: 3px; border-radius: 0 0 3px 3px; background: var(--indigo); }
+  .flow-card--yellow .strip { background: var(--yellow); }
+  .badge {
+    position: absolute; left: -38px; top: 30px; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--surface); border: 1px solid var(--line-strong); display: flex; align-items: center;
+    justify-content: center; color: var(--indigo);
+  }
+  .flow-head { display: flex; align-items: center; justify-content: space-between; }
+  .flow-num { font-size: 13px; color: var(--indigo-dark); }
+  .flow-card--yellow .flow-num { color: var(--yellow-ink); }
+
+  .steer {
+    position: relative; margin-top: 28px; padding: 22px 24px; border-radius: 16px; border: 1.5px dashed var(--indigo-dash);
+    background: var(--surface); display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center;
+  }
+  .risers { position: absolute; left: 0; right: 0; top: -28px; height: 28px; pointer-events: none; }
+  .risers span { position: absolute; top: 2px; bottom: 0; border-left: 1.5px dashed var(--indigo-dash); }
+  .steer-box { box-shadow: 0 6px 18px rgba(75, 59, 255, 0.35); }
+  .steer-head { flex: 1 1 200px; display: flex; flex-direction: column; gap: 2px; }
+  .steer-label { font-size: 13px; font-weight: 600; color: var(--indigo-dark); }
+  .steer-body { flex: 2 1 340px; color: var(--ink-2); }
+
+  .evolve { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; }
+  .evolve-intro { flex: 1 1 280px; max-width: 520px; display: flex; flex-direction: column; gap: 10px; }
+  .evolve-head { display: flex; align-items: center; gap: 12px; }
+  .evolve-label { font-size: 13px; color: var(--indigo-dark); }
+  .releases-wrap { flex: 999 1 560px; container-type: inline-size; }
+  .releases { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 12px 28px; }
+  .release {
+    position: relative; display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; border-radius: 14px;
+    background: var(--surface); border: 1px solid var(--line);
+  }
+  .release--next { border: 1px dashed var(--line-dashed-2); }
+  .release-arrow {
+    position: absolute; left: -24px; top: 20px; width: 20px; height: 20px; display: flex;
+    align-items: center; justify-content: center; color: var(--indigo-dash);
+  }
+  .release-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .release-version { font-size: 13px; color: var(--indigo-dark); }
+  .release-title { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .release--next :is(.release-version, .release-title) { color: var(--muted); }
+  .release-body { font-size: 13.5px; line-height: 21px; color: var(--muted); }
+  .live {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 2px 9px;
+    border-radius: 99px; background: var(--yellow-tint); color: var(--yellow-ink);
+  }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--live); }
+
+  /* The arrows and risers only make sense while the cards sit in one row
+     (3 × 240px + 2 × 44px gaps; 3 × 170px + 2 × 28px). Once they wrap, drop them. */
+  @container (max-width: 807px) {
+    .badge, .risers { display: none; }
+  }
+  @container (max-width: 565px) {
+    .release-arrow { display: none; }
+  }
+</style>

@@ -1,0 +1,14 @@
+{
+  "name": "Timo Time Tracking",
+  "order": 7,
+  "featured": false,
+  "accent": "indigo",
+  "inProgress": true,
+  "disciplines": "Apps · Web · In progress",
+  "status": "",
+  "url": null,
+  "summary": "Time tracking apps and the website to go with them — being built right now, the same way.",
+  "image": null,
+  "imageFocus": "center",
+  "tileIcon": "timer"
+}

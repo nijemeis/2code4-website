@@ -1,0 +1,14 @@
+{
+  "kicker": "Side by side",
+  "title": "Same outcome. A different engine.",
+  "traditionalLabel": "A traditional team",
+  "oursLabel": "2code4",
+  "rows": [
+    { "label": "Who decides", "traditional": "Spread across roles, meetings and tickets", "ours": "The product owner. AI proposes, a human decides" },
+    { "label": "Who holds the idea", "traditional": "Passed from brief to analyst to designer to developer", "ours": "One person, from first conversation to launch" },
+    { "label": "First working version", "traditional": "After specs, estimates and a few sprints", "ours": "Clickable while the concept is still being discussed" },
+    { "label": "Changing your mind", "traditional": "A change request and a new estimate", "ours": "A conversation and a new build" },
+    { "label": "Range", "traditional": "A specialist per layer", "ours": "Apps, web, firmware and dashboards from one seat" },
+    { "label": "What you pay for", "traditional": "Hours of typing", "ours": "Decisions, and the judgement to check them" }
+  ]
+}

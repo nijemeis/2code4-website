@@ -1,0 +1,14 @@
+{
+  "name": "Sensimity & the AI-lert Box",
+  "order": 1,
+  "featured": true,
+  "accent": "indigo",
+  "inProgress": false,
+  "disciplines": "Hardware · Firmware · Apps · Dashboard",
+  "status": "Pilot programme",
+  "url": "https://sensimity.com",
+  "summary": "The whole chain, sensor to insight. The AI-lert Box fuses radar, camera, air quality and a beacon mesh on one Raspberry Pi board — and warns people before the accident happens.",
+  "image": "../../assets/projects/sensimity/image.jpeg",
+  "imageFocus": "center",
+  "tileIcon": "cube"
+}

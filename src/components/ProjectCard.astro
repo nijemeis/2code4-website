@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>['data'];
+  featured?: boolean;
+}
+const { project: p, featured = false } = Astro.props;
+const domain = p.url ? new URL(p.url).hostname.replace(/^www\./, '') : null;
+const yellow = p.accent === 'yellow';
+---
+
+<article class:list={['card', featured ? 'card--featured' : 'card--small', { 'card--yellow': yellow, 'card--wip': p.inProgress }]}>
+  {p.image ? (
+    <div class="media">
+      <Image
+        src={p.image}
+        alt=""
+        widths={featured ? [480, 720, 1080, 1440] : [320, 480, 720]}
+        sizes={featured ? '(min-width: 1200px) 530px, (min-width: 800px) 45vw, 100vw' : '(min-width: 1200px) 260px, (min-width: 600px) 45vw, 100vw'}
+        style={`object-position: ${p.imageFocus === 'top' ? 'center top' : 'center'}`}
+      />
+    </div>
+  ) : (
+    <div class="tile" aria-hidden="true"><Icon name={p.tileIcon} size={40} stroke={12} /></div>
+  )}
+  <div class="content">
+    {p.disciplines && <span class="disciplines mono">{p.disciplines}</span>}
+    <h3>{p.name}</h3>
+    <p class="summary">{p.summary}</p>
+    {featured ? (
+      (p.status || domain) && (
+        <div class="meta">
+          {p.status && <span class:list={['pill', { 'pill--yellow': yellow }]}>{p.status}</span>}
+          {domain && <a href={p.url}>{domain} →</a>}
+        </div>
+      )
+    ) : (
+      domain && <a class="link" href={p.url}>{domain} →</a>
+    )}
+  </div>
+</article>
+
+<style>
+  .card { background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; }
+  .media { position: relative; aspect-ratio: 16 / 10; background: var(--bg); overflow: hidden; }
+  .card--yellow .media { background: var(--yellow-tint); }
+  .media :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .content { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .disciplines { font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--indigo-dark); }
+  .card--yellow .disciplines { color: var(--yellow-ink); }
+  h3 { letter-spacing: -0.02em; }
+  .summary { color: var(--muted); }
+
+  .card--featured { border-radius: 18px; box-shadow: 0 10px 28px rgba(21, 20, 31, 0.06); overflow: hidden; }
+  .card--featured .content { padding: 22px 24px 24px; }
+  .card--featured h3 { font-size: 24px; }
+  .card--featured .summary { font-size: 14.5px; line-height: 24px; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 4px; font-size: 13px; font-weight: 500; }
+  .meta .pill { font-size: 13px; }
+
+  .card--small { padding: 20px; border-radius: 16px; gap: 10px; }
+  .card--small .media { border-radius: 10px; }
+  .card--wip { border: 1.5px dashed var(--indigo-dash); }
+  .tile {
+    aspect-ratio: 16 / 10; border-radius: 10px; background: var(--bg); border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center; color: var(--indigo);
+  }
+  .card--small h3 { font-size: 19px; }
+  .card--small .summary { font-size: 14px; line-height: 22px; flex: 1; }
+  .link { font-size: 13px; font-weight: 500; }
+</style>

@@ -1,0 +1,14 @@
+{
+  "name": "Dealiteful",
+  "order": 3,
+  "featured": false,
+  "accent": "indigo",
+  "inProgress": false,
+  "disciplines": "Apps · Web",
+  "status": "",
+  "url": "https://dealiteful.com",
+  "summary": "Hyperlocal deals. Walk into beacon range and your phone shows what's on offer inside.",
+  "image": "../../assets/projects/dealiteful/image.webp",
+  "imageFocus": "top",
+  "tileIcon": "cube"
+}

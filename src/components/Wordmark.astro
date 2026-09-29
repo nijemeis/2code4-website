@@ -1,0 +1,14 @@
+---
+/** "2code4" with the yellow highlighter under "code". Text, not an image, so it stays crisp and selectable. */
+interface Props {
+  size?: number;
+}
+const { size = 22 } = Astro.props;
+---
+
+<span class="wordmark" style={`font-size: ${size}px`}>2<span>code</span>4</span>
+
+<style>
+  .wordmark { font-weight: 700; letter-spacing: -0.045em; color: var(--ink); white-space: nowrap; }
+  .wordmark span { background: var(--hl-mark); padding: 0 0.03em; }
+</style>

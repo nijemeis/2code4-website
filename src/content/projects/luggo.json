@@ -1,0 +1,14 @@
+{
+  "name": "Luggo",
+  "order": 6,
+  "featured": false,
+  "accent": "indigo",
+  "inProgress": false,
+  "disciplines": "Apps · In development",
+  "status": "",
+  "url": null,
+  "summary": "Luggage, tracked. The suitcase announces itself on the belt before you see it.",
+  "image": null,
+  "imageFocus": "center",
+  "tileIcon": "suitcase"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Whemma",
+  "order": 4,
+  "featured": false,
+  "accent": "indigo",
+  "inProgress": false,
+  "disciplines": "Apps · Web",
+  "status": "",
+  "url": "https://whemma.com",
+  "summary": "Find what you parked. Warmer, colder, found.",
+  "image": "../../assets/projects/whemma/image.png",
+  "imageFocus": "center",
+  "tileIcon": "cube"
+}
