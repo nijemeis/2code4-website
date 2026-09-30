@@ -8,7 +8,7 @@
   "status": "",
   "url": null,
   "summary": "Time tracking apps and the website to go with them — being built right now, the same way.",
-  "image": null,
-  "imageFocus": "center",
+  "image": "../../assets/projects/timo/image.webp",
+  "imageFocus": "top",
   "tileIcon": "timer"
 }

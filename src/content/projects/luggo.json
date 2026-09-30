@@ -8,7 +8,7 @@
   "status": "",
   "url": null,
   "summary": "Luggage, tracked. The suitcase announces itself on the belt before you see it.",
-  "image": null,
+  "image": "../../assets/projects/luggo/image.png",
   "imageFocus": "center",
   "tileIcon": "suitcase"
 }

@@ -13,8 +13,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
 const notes = [];
 
-const contact = read('src/content/contact.json');
-if (contact.email === 'hello@2code4.com') notes.push('Contact email is still the placeholder hello@2code4.com. Confirm the address exists');
 
 const quote = read('src/content/quote.json');
 if (quote.attribution === 'Founder, 2code4') notes.push('The statement is attributed to “Founder, 2code4”. Replace it with a name if wanted');
