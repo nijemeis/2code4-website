@@ -1,0 +1,14 @@
+{
+  "name": "2code4.com",
+  "order": 8,
+  "featured": false,
+  "accent": "indigo",
+  "inProgress": false,
+  "disciplines": "Web",
+  "status": "",
+  "url": "https://2code4.com",
+  "summary": "This site. Designed in Claude Design, built and shipped with Claude Code — concept, prompt, check, decide, from handoff to live.",
+  "image": "../../assets/projects/2code4/image.webp",
+  "imageFocus": "top",
+  "tileIcon": "layout"
+}

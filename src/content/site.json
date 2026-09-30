@@ -1,30 +1,75 @@
 {
   "heroReading": "front",
-  "mantra": ["Concept", "Prompt", "Check", "Decide"],
+  "mantra": [
+    "Concept",
+    "Prompt",
+    "Check",
+    "Decide"
+  ],
   "heroIntro": "Apps, websites, webshops and electronics — led by a product owner who prompts, checks and decides. AI does the typing; every call on what gets built, and when it’s right, stays human.",
   "heroCard": {
     "title": "Who does what",
     "steps": [
-      { "title": "Concept", "caption": "What should exist, for whom, and why — worked out first.", "icon": "bulb" },
-      { "title": "Prompt", "caption": "Every screen, flow and feature starts as a precise brief to the AI.", "icon": "terminal" },
-      { "title": "Check", "caption": "Each result reviewed against the concept, the code and the edge cases.", "icon": "magnifier" },
-      { "title": "Decide", "caption": "Nothing ships until it’s right. Then it’s yours.", "icon": "cube" }
+      {
+        "title": "Concept",
+        "caption": "What should exist, for whom, and why — worked out first.",
+        "icon": "bulb"
+      },
+      {
+        "title": "Prompt",
+        "caption": "Every screen, flow and feature starts as a precise brief to the AI.",
+        "icon": "terminal"
+      },
+      {
+        "title": "Check",
+        "caption": "Each result reviewed against the concept, the code and the edge cases.",
+        "icon": "magnifier"
+      },
+      {
+        "title": "Decide",
+        "caption": "Nothing ships until it’s right. Then it’s yours.",
+        "icon": "cube"
+      }
     ],
     "tags": [
-      { "label": "App", "highlight": false },
-      { "label": "Website", "highlight": false },
-      { "label": "Webshop", "highlight": true },
-      { "label": "Hardware", "highlight": false }
+      {
+        "label": "App",
+        "highlight": false
+      },
+      {
+        "label": "Website",
+        "highlight": false
+      },
+      {
+        "label": "Webshop",
+        "highlight": true
+      },
+      {
+        "label": "Hardware",
+        "highlight": false
+      }
     ],
     "loopNote": "Live — then back to Concept for the next iteration.",
     "creditNote": "Built with Claude Design & Claude Code. Directed by a human."
   },
   "showStats": true,
   "stats": [
-    { "value": "7", "label": "products built" },
-    { "value": "3", "label": "disciplines" },
-    { "value": "1", "label": "product owner in charge" },
-    { "value": "0", "label": "decisions left to the AI" }
+    {
+      "value": "8",
+      "label": "products built"
+    },
+    {
+      "value": "3",
+      "label": "disciplines"
+    },
+    {
+      "value": "1",
+      "label": "product owner in charge"
+    },
+    {
+      "value": "0",
+      "label": "decisions left to the AI"
+    }
   ],
   "showComparison": true,
   "footerNote": "Built with Claude. Prompted, checked and decided by a human."
