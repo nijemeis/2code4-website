@@ -1,5 +1,7 @@
 # 2code4.com
 
+Live at https://2code4.com (Netlify site `2code4`, deploys `main` on push).
+
 One-page marketing site for 2code4, built from the Claude Design handoff in
 [`docs/handoff/`](docs/handoff/README.md). Same setup as the Sensimity and
 Dealiteful sites: **Astro 7** (static), **Keystatic** as the CMS, deployed on
@@ -36,6 +38,9 @@ the other one. "Read it the other way" toggles the attribute, and CSS does the r
 
 1. Create the GitHub repo (e.g. `nijemeis/2code4-website`) and push `main`.
 2. On Netlify: *Add new site → Import from Git*. `netlify.toml` covers the build.
+   Make sure the repo is ticked under the Netlify app's **Repository access** at
+   github.com/settings/installations. For a public repo, manual deploys still
+   work without it, but pushes (including Keystatic saves) never trigger a build.
 3. **Enable form detection** (Site configuration → Forms). New Netlify sites have
    it off, and until it's on the contact form answers 404. Add an email
    notification for the `contact` form there too.
