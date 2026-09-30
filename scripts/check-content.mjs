@@ -25,6 +25,6 @@ if (noImage.length) notes.push(`Projects showing the icon tile (no screenshot ye
 notes.push('Project images were pulled from the live sites. Swap in final screenshots via Keystatic when ready');
 
 if (!existsSync(join(root, 'public/og.png'))) notes.push('public/og.png is missing. Run npm run og');
-else notes.push('public/og.png is the generated placeholder card (npm run og). Replace it with a designed one when ready');
+
 
 console.log(notes.length ? `Outstanding before launch:\n  - ${notes.join('\n  - ')}` : 'Nothing outstanding.');

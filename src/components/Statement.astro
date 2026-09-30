@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { getEntry } from 'astro:content';
+import badge from '../assets/brand/badge.png';
 
 const q = (await getEntry('quote', 'quote'))!.data;
 ---
@@ -12,12 +14,16 @@ const q = (await getEntry('quote', 'quote'))!.data;
       {q.attribution && <figcaption>— {q.attribution}</figcaption>}
     </div>
   </figure>
+  <Image src={badge} alt="2code4 — That is something" widths={[180, 360]} sizes="180px" class="badge" />
 </section>
 
 <style>
-  .statement { padding: 84px 0 104px; }
+  .statement { padding: 84px 0 104px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px 48px; }
   figure { margin: 0; display: flex; gap: 20px; }
   .mark { font-size: 96px; line-height: 0.8; font-weight: 700; color: var(--indigo); }
   blockquote { font-size: clamp(24px, 2.6vw, 34px); line-height: 1.3; letter-spacing: -0.02em; font-weight: 500; max-width: 32ch; margin: 0; }
   figcaption { font-size: 15px; margin-top: 20px; color: var(--muted); }
+  /* The original badge, set like a stamp beside the founder's line. */
+  .badge { width: 180px; height: auto; flex: none; margin-right: 16px; transform: rotate(-8deg); filter: drop-shadow(0 10px 24px rgba(21, 20, 31, 0.18)); }
+  @media (max-width: 600px) { .badge { width: 140px; } }
 </style>

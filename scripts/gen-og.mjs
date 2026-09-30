@@ -1,7 +1,6 @@
 /**
  * Renders public/og.png (1200×630): the wordmark on the paper ground with the
- * yellow highlighter, as the handoff asks for. Provisional until a designed
- * card replaces it.
+ * yellow highlighter, as the handoff asks for, plus the original badge.
  *
  *   npm run og
  */
@@ -28,5 +27,12 @@ const svg = `
 
 // The highlighter rect is placed for the system Helvetica fallback; re-check it
 // by eye if the machine renders the card with a different font.
-await sharp(Buffer.from(svg)).png().toFile(out);
+// The original badge sits in the right half, tilted like a stamp.
+const badgeSrc = fileURLToPath(new URL('../src/assets/brand/badge.png', import.meta.url));
+const badge = await sharp(badgeSrc).resize(380, 380).rotate(-8, { background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+const { width = 0, height = 0 } = await sharp(badge).metadata();
+await sharp(Buffer.from(svg))
+  .composite([{ input: badge, left: Math.round(930 - width / 2), top: Math.round(315 - height / 2) }])
+  .png()
+  .toFile(out);
 console.log('wrote', out);
