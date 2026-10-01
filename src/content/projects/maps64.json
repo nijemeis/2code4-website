@@ -1,0 +1,14 @@
+{
+  "name": "Maps64",
+  "order": 1,
+  "featured": false,
+  "accent": "indigo",
+  "inProgress": false,
+  "disciplines": "Games · Web",
+  "status": "Free game",
+  "url": "https://maps64.com",
+  "summary": "Enjoy a nice retro game! Maps, brought back to life by 2code4. Fly to the right city before your fuel runs out! Educative and fun!",
+  "image": "../../assets/projects/maps64/image.gif",
+  "imageFocus": "center",
+  "tileIcon": "cube"
+}
